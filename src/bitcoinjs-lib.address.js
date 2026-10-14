@@ -7,6 +7,9 @@ Bitcoin.Address = function (bytes) {
 	this.version = Bitcoin.Address.networkVersion;
 };
 
+// Bitcore BTX mainnet pubkey address version byte = 0x03 (base58 addresses start with '2').
+// Confirmed against the official BitCore node (LIMXTEC/BitCore src/chainparams.cpp):
+//   base58Prefixes[PUBKEY_ADDRESS] = 3, base58Prefixes[SECRET_KEY] = 128 (0x80), bech32_hrp = "btx".
 Bitcoin.Address.networkVersion = 0x03; // mainnet
 
 /**
