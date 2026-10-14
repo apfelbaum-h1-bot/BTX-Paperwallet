@@ -12,6 +12,11 @@ Bitcoin.Address = function (bytes) {
 //   base58Prefixes[PUBKEY_ADDRESS] = 3, base58Prefixes[SECRET_KEY] = 128 (0x80), bech32_hrp = "btx".
 Bitcoin.Address.networkVersion = 0x03; // mainnet
 
+// Human-readable part for native SegWit (bech32) addresses, addresses look like btx1...
+// Same source: LIMXTEC/BitCore src/chainparams.cpp (bech32_hrp = "btx") and src/key_io.cpp
+// (standard BIP-173 bech32, witness v0). Documented at https://bitcore.cc/wallets (bc1... -> btx1...).
+Bitcoin.Address.bech32Hrp = "btx"; // mainnet
+
 /**
 * Serialize this object as a standard Bitcoin address.
 *

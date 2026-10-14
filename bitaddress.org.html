@@ -6869,8 +6869,8 @@ a:hover { color: #ff9c00; }
 				<div class="commands">
 					<div id="singlecommands" class="row">
 						<span><input type="button" id="newaddress" value="Generate New Address" onclick="ninja.wallets.singlewallet.generateNewAddressAndKey();" /></span>
-										<span><label id="singlelabelsegwit" for="singlesegwit">SegWit address (btx1...)?</label> <input type="checkbox" id="singlesegwit" onchange="ninja.wallets.singlewallet.toggleSegwit();" /></span>
-										<span class="print"><input type="button" name="print" value="Print" id="singleprint" onclick="window.print();" /></span>
+						<span><label id="singlelabelsegwit" for="singlesegwit">SegWit address (btx1...)?</label> <input type="checkbox" id="singlesegwit" onchange="ninja.wallets.singlewallet.toggleSegwit();" /></span>
+						<span class="print"><input type="button" name="print" value="Print" id="singleprint" onclick="window.print();" /></span>
 					</div>
 				</div>
 				<div class="body">
@@ -6911,7 +6911,7 @@ a:hover { color: #ff9c00; }
 				<div class="commands">
 					<div id="papercommands" class="row">
 						<span><label id="paperlabelhideart" for="paperart">Hide Art?</label> <input type="checkbox" id="paperart" onchange="ninja.wallets.paperwallet.toggleArt(this);" /></span>
-					<span><label id="paperlabelsegwit" for="papersegwit">SegWit address (btx1...)?</label> <input type="checkbox" id="papersegwit" onchange="ninja.wallets.paperwallet.toggleSegwit(this);" /></span>
+						<span><label id="paperlabelsegwit" for="papersegwit">SegWit address (btx1...)?</label> <input type="checkbox" id="papersegwit" onchange="ninja.wallets.paperwallet.toggleSegwit(this);" /></span>
 						<span><label id="paperlabeladdressestogenerate" for="paperlimit">Addresses to generate:</label> <input type="text" id="paperlimit" /></span>
 						<span><input type="button" id="papergenerate" value="Generate" onclick="ninja.wallets.paperwallet.build(document.getElementById('paperlimit').value * 1, document.getElementById('paperlimitperpage').value * 1, !document.getElementById('paperart').checked, document.getElementById('paperpassphrase').value);" /></span>
 						<span class="print"><input type="button" name="print" value="Print" id="paperprint" onclick="window.print();" /></span>
@@ -6931,6 +6931,7 @@ a:hover { color: #ff9c00; }
 						<span><label id="bulklabelstartindex" for="bulkstartindex">Start index:</label> <input type="text" id="bulkstartindex" value="1" /></span>
 						<span><label id="bulklabelrowstogenerate" for="bulklimit">Rows to generate:</label> <input type="text" id="bulklimit" value="3" /></span>
 						<span><label id="bulklabelcompressed" for="bulkcompressed">Compressed addresses?</label> <input type="checkbox" id="bulkcompressed" checked="checked" /></span>
+						<span><label id="bulklabelsegwit" for="bulksegwit">SegWit address (btx1...)?</label> <input type="checkbox" id="bulksegwit" /></span>
 						<span><input type="button" id="bulkgenerate" value="Generate" onclick="ninja.wallets.bulkwallet.buildCSV(document.getElementById('bulklimit').value * 1, document.getElementById('bulkstartindex').value * 1, document.getElementById('bulkcompressed').checked, document.getElementById('bulkpassphrase').value);" /> </span>
 						<span class="print"><input type="button" name="print" id="bulkprint" value="Print" onclick="window.print();" /></span>
 					</div>
@@ -7130,6 +7131,11 @@ a:hover { color: #ff9c00; }
 							<div id="detailqrcodepubliccomp" class="qrcode_public"></div>
 							<span class="output" id="detailaddresscomp"></span>
 						</div>
+					</div>
+					<br />
+					<div class="item clear">
+						<span class="label" id="detaillabeladdressesegwit">SegWit Address (P2WPKH, btx1...)</span>
+						<span class="output" id="detailaddresssegwit"></span>
 					</div>
 					<br /><br />
 					<div class="item clear">
@@ -10382,7 +10388,7 @@ ninja.wallets.paperwallet = {
 					// when the segwit checkbox is on (and BIP38 encryption off), emit btx1... addresses
 					var address = bulk.segwit ? key.getBech32Address() : key.getBitcoinAddress();
 					bulk.csv.push((bulk.csvRowLimit - bulk.csvRowsRemaining + bulk.csvStartIndex)
-											+ ",\"" + address + "\",\"" + key.toString("wif")
+										+ ",\"" + address + "\",\"" + key.toString("wif")
 										//+	"\",\"" + key.toString("wifcomp")    // uncomment these lines to add different private key formats to the CSV
 										//+ "\",\"" + key.getBitcoinHexFormat() 
 										//+ "\",\"" + key.toString("base64") 

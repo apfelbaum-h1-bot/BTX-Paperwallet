@@ -69,6 +69,36 @@
 		},
 
 		synchronousTests: {
+			//bech32 / native SegWit (btx1...) tests
+			testBech32Bip173EncodeVector: function () {
+				// BIP-173 reference vector: witness v0 program 751e76e8...3bd6 with hrp "bc"
+				var prog = [0x75, 0x1e, 0x76, 0xe8, 0x19, 0x91, 0x96, 0xd4, 0x54, 0x94, 0x1c, 0x45, 0xd1, 0xb3, 0xa3, 0x23, 0xf1, 0x43, 0x3b, 0xd6];
+				var data = Bitcoin.Bech32.convertBits(prog, 8, 5, true);
+				var addr = Bitcoin.Bech32.encode("bc", [0].concat(data));
+				if (addr !== "bc1qw508d6qejxtdg4y5r3zarvary0c5xw7kv8f3t4") return false;
+				return true;
+			},
+			testBech32RejectsTamperedAddress: function () {
+				// last data character flipped -> checksum must fail
+				if (Bitcoin.Bech32.decode("btx1qztspd7gds0tm3zysccwf2dshglxgc6jwwnahgq") !== null) return false;
+				// mixed case must be rejected
+				if (Bitcoin.Bech32.decode("BTX1qztspd7gds0tm3zysccwf2dshglxgc6jwwnahgp") !== null) return false;
+				return true;
+			},
+			testBech32P2wpkhAddressDerivation: function () {
+				// expected value computed with an independent pure-Python secp256k1 +
+				// BIP-173 implementation (HRP "btx" per LIMXTEC/BitCore chainparams.cpp)
+				var key = new Bitcoin.ECKey("0004d30da67214fa65a41a6493576944c7ea86713b14db437446c7a8df8e13da");
+				key.setCompressed(true);
+				var addr = key.getBech32Address();
+				if (addr !== "btx1qztspd7gds0tm3zysccwf2dshglxgc6jwwnahgp") return false;
+				// the legacy compressed base58 address of the same key must be unchanged
+				if (key.getBitcoinAddress().substring(0, 1) !== "2") return false;
+				// decode roundtrip: hrp btx, witness version 0, 20-byte program
+				var dec = Bitcoin.Bech32.decode(addr);
+				if (dec == null || dec.hrp !== "btx" || dec.data[0] !== 0 || dec.data.length !== 33) return false;
+				return true;
+			},
 			//ninja.publicKey tests
 			testIsPublicKeyHexFormat: function () {
 				var key = "0478982F40FA0C0B7A55717583AFC99A4EDFD301A2729DC59B0B8EB9E18692BCB521F054FAD982AF4CC1933AFD1F1B563EA779A6AA6CCE36A30B947DD653E63E44";
