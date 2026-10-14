@@ -46,7 +46,7 @@ Bitcoin.Address.decodeString = function (string) {
 
 	var version = hash.shift();
 
-	if (version != 0) {
+	if (version != Bitcoin.Address.networkVersion) {
 		throw "Version " + version + " not supported!";
 	}
 
