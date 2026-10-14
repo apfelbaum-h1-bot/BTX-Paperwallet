@@ -1,21 +1,25 @@
-# bitaddress.org
-JavaScript Client-Side Bitcoin Wallet Generator
+# bitcore.cc - Bitcore BTX Paper Wallet
+JavaScript Client-Side Bitcore BTX Wallet Generator (fork of bitaddress.org v3.3.0)
 
-Now Bitcoin addresses and their corresponding private key can be conveniently 
-generated in a web browser.
+This is the bitcore.cc Bitcore BTX edition of the bitaddress.org paper
+wallet. Now Bitcore BTX addresses and their corresponding private key can be
+conveniently generated in a web browser.
 
-The bitaddress.org project provides an all-in-one HTML document with embedded
+The bitcore.cc project provides an all-in-one HTML document with embedded
 JavaScript/Css/Images. The JavaScript is readable not minified and contains no
 XMLHttpRequest's (no AJAX). The benefit of this technique is you can load the 
 JavaScript locally and trust that the JavaScript did not change after being 
 loaded. 
 
-Here is a link to the BitcoinTalk.org forum topic discussing this project:
+All crypto source files are byte-identical to bitaddress.org v3.3.0; only
+visible text/strings were rebranded (Bitcoin -> Bitcore BTX) and the dead
+Bitcoin explorers were replaced with chainz.cryptoid.info/btx.
+
+Here is a link to the BitcoinTalk.org forum topic discussing the original
+project:
 https://bitcointalk.org/index.php?topic=43496.0
 
-
-Please send DONATIONS for this project to Bitcoin Address: 
-1NiNja1bUmhSoTXozBRBEtR8LeF9TGbZBN
+Fork repository: https://github.com/bitcore-btx/BTX-Paperwallet
 
 
 END USER NOTES:
