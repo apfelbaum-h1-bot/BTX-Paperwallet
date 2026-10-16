@@ -37,9 +37,9 @@ Changes:
 - Fixed dead GitHub archive zip links; fixed German FAQ placeholder
   (BITCOINADRESSE -> DIEADRESSEHIN); fixed misleading "sweep at chainz"
   tip (chainz is an explorer only).
-- Release signing: new PGP key 6590 A6D1 2F3A 97FB
-  (fingerprint C22EEE49B5CFEDBAA5B633746590A6D12F3A97FB), public key in
-  bitcore-paperwallet-public.asc.
+- Release signing: new PGP key A0F4 B209 4270 2E78
+  (fingerprint E5478242B619D47A41F0345CA0F4B20942702E78,
+  info@bitcore.cc), public key in bitcore-paperwallet-public.asc.
 
 
 Bitcoin Forum thread:
