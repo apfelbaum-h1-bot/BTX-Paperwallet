@@ -18,6 +18,30 @@ The bitcore.cc software is available Open Source under the MIT License
 https://github.com/pointbiz/bitaddress.org
 Fork: https://github.com/bitcore-btx/BTX-Paperwallet
 
+bitcore.cc Paper Wallet 3.4.0 (2026-10-16)
+
+New features:
+- SegWit (P2WPKH, btx1...) addresses in Single, Bulk, Paper and Brain Wallet.
+- "Skip randomness" button: finish mouse seeding immediately using the
+  browser's built-in CSPRNG (no entropy source removed).
+
+Changes:
+- Default language English; browser language auto-detected when supported.
+- Header logo links to https://bitcore.cc (new tab).
+- Bulk Wallet commands in an invisible table; buttons "1. Generate"/"2. Print".
+- Paper wallet artwork rebranded (Bitcore logos, wordmark, microprint,
+  watermark) for both the normal and BIP38 (encrypted) templates.
+- Footer: translator donation Bitcoin addresses replaced with a
+  "Donations & original site: click here" link to https://bitaddress.org
+  in all languages.
+- Fixed dead GitHub archive zip links; fixed German FAQ placeholder
+  (BITCOINADRESSE -> DIEADRESSEHIN); fixed misleading "sweep at chainz"
+  tip (chainz is an explorer only).
+- Release signing: new PGP key 6590 A6D1 2F3A 97FB
+  (fingerprint C22EEE49B5CFEDBAA5B633746590A6D12F3A97FB), public key in
+  bitcore-paperwallet-public.asc.
+
+
 Bitcoin Forum thread:
 https://bitcointalk.org/index.php?topic=43496.0
 

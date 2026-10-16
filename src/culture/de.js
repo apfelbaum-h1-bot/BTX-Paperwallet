@@ -23,7 +23,9 @@
 		"tagline": "Offener, client-seitiger Bitcore BTX-Wallet-Generator in JavaScript",
 		"generatelabelbitcoinaddress": "Erstelle Bitcore BTX-Wallet...",
 		"generatelabelmovemouse": "Bewege deine Maus umher, um die Zuf&auml;lligkeit zu erh&ouml;hen...",
-		"generatelabelkeypress": "OR type some random characters into this textbox", //TODO: please translate
+		"generatelabelkeypress": "ODER geben Sie zufällige Zeichen in dieses Textfeld ein",
+		"skipseed": "Zufälligkeit überspringen »",
+		"generatelabelskip": "(nutzt den eingebauten CSPRNG des Browsers — Mausbewegung ergänzt nur zusätzliche Entropie)",
 		"singlewallet": "Einzelnes Wallet",
 		"paperwallet": "Papier-Wallet",
 		"bulkwallet": "Massen-Wallet",
@@ -34,7 +36,7 @@
 
 		// footer html
 		"footerlabeldonations": "Spenden:",
-		"footerlabeltranslatedby": "&Uuml;bersetzung: 1EWPcmYmU8MamRUYMFWQa1r7A2Tskz78t5",
+		"footerlabeltranslatedby": "Spenden &amp; Original-Seite: <a href=\"https://bitaddress.org\" target=\"_blank\" rel=\"noopener noreferrer\">hier klicken</a>",
 		"footerlabelpgp": "PGP",
 		"footerlabelversion": "Versionsgeschichte",
 		"footerlabelgithub": "GitHub-Repository",
@@ -95,8 +97,8 @@
 		"bulklabelstartindex": "Startindex:",
 		"bulklabelrowstogenerate": "Zu erstellende Adressen:",
 		"bulklabelcompressed": "Adressen komprimieren?",
-		"bulkgenerate": "Erstellen",
-		"bulkprint": "Drucken",
+		"bulkgenerate": "1. Erstellen",
+		"bulkprint": "2. Drucken",
 		"bulklabelcsv": "Comma Separated Values (CSV):",
 		"bulklabelformat": "Index, Adresse, privater Schl&uuml;ssel (WIF)",
 		"bulklabelq1": "Warum sollte ich ein Massen-Wallet auf meiner Webseite einsetzen?",
@@ -105,7 +107,7 @@
 		"bulklabela2li1": "Erstelle mithilfe dieser Seite ganz viele Bitcore BTX-Adressen (10.000+). Kopiere die CSV-Liste in eine sichere Textdatei auf deinem Computer. Fertige ein Backup dieser Datei an und speichere sie an einem sicheren Ort.",
 		"bulklabela2li2": "Importiere die Bitcore BTX-Adressen in eine Datenbank auf deinem Server. (Lege nur die Bitcore BTX-Adressen, nicht aber die privaten Schl&uuml;ssel auf deinem Server ab!)",
 		"bulklabela2li3": "Biete deinen Kunden auf deiner Webseite Bitcore BTX als Zahlungsm&ouml;glichkeit an. Wenn ein Kunde mit Bitcore BTX zahlen m&ouml;chte, zeige ihm eine der Adressen aus deiner Datenbank als Zahlungsadresse an und speichere sie mit seiner Bestellung.",
-		"bulklabela2li4": "Jetzt musst du dir den Zahlungseingang best&auml;tigen lassen. Google \"bitcore BTX payment notification\" und melde dich bei mindestens einem solchen Anbieter an. Es gibt verschiedene Anbieter, die dich via Web, API, SMS, E-Mail etc. &uuml;ber erfolgte Transaktionen informieren k&ouml;nnen. Sobald du die Eingangsbest&auml;tigung erh&auml;lst, kannst du automatisch die Bestellung abwickeln lassen. Um selber zu schauen, ob eine Zahlung erfolgt ist, kannst du Block Explorer nutzen. Ersetze BITCOINADRESSE durch die Bitcore BTX-Adresse, die du pr&uuml;fen m&ouml;chtest. Es dauert von zehn Minuten bis zu einer Stunde, um Transaktionen zu best&auml;tigen. <br />https://chainz.cryptoid.info/btx/address.dws?BITCOINADRESSE<br /> <br />Unbest&auml;tigte Transaktionen findest du hier: https://chainz.cryptoid.info/btx/ <br /> S&auml;mtliche Transaktionen sollten dort innerhalb von 30 Sekunden auftauchen.",
+		"bulklabela2li4": "Jetzt musst du dir den Zahlungseingang best&auml;tigen lassen. Google \"bitcore BTX payment notification\" und melde dich bei mindestens einem solchen Anbieter an. Es gibt verschiedene Anbieter, die dich via Web, API, SMS, E-Mail etc. &uuml;ber erfolgte Transaktionen informieren k&ouml;nnen. Sobald du die Eingangsbest&auml;tigung erh&auml;lst, kannst du automatisch die Bestellung abwickeln lassen. Um selber zu schauen, ob eine Zahlung erfolgt ist, kannst du Block Explorer nutzen. Ersetze DIEADRESSEHIN durch die Bitcore BTX-Adresse, die du pr&uuml;fen m&ouml;chtest. Es dauert von zehn Minuten bis zu einer Stunde, um Transaktionen zu best&auml;tigen. <br />https://chainz.cryptoid.info/btx/address.dws?DIEADRESSEHIN<br /> <br />Unbest&auml;tigte Transaktionen findest du hier: https://chainz.cryptoid.info/btx/ <br /> S&auml;mtliche Transaktionen sollten dort innerhalb von 30 Sekunden auftauchen.",
 		"bulklabela2li5": "Deine BTX werden sicher in die Block-Chain aufgenommen. Mithilfe des urspr&uuml;nglichen Wallets vom ersten Schritt kannst du sie ausgeben.",
 
 		// brain wallet html

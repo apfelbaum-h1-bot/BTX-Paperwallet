@@ -34,7 +34,7 @@
 
 		// footer html
 		"footerlabeldonations": "プロジェクト寄付先",
-		"footerlabeltranslatedby": "日本語訳寄付先 1o3EBhxPhGn8cGCL6Wzi5F5kTPuBofdMf",
+		"footerlabeltranslatedby": "寄付とオリジナルサイト: <a href=\"https://bitaddress.org\" target=\"_blank\" rel=\"noopener noreferrer\">ここをクリック</a>",
 		"footerlabelpgp": "PGP",
 		"footerlabelversion": "バージョン履歴",
 		"footerlabelgithub": "GitHubリポジトリ",

@@ -33,6 +33,11 @@ input[type=checkbox] { position: relative; z-index: 20; }
 .seedpoint { width: 6px; height: 6px; display: block; border-radius: 3px; background-color: #ff9c00; position: absolute; z-index: 10; }
 #generate { font-family: monospace; font-size: 1.25em; height: 305px; text-align: left; position: relative; padding: 5px; border: 2px solid #0a1537; clear: both; }
 #generate span { padding: 5px 5px 0 5px; }
+/* skip row: bottom-right inside #generate; button left-aligned, entropy input right-aligned */
+#skiprow { position: absolute; right: 10px; bottom: 8px; display: flex; align-items: center; gap: 8px; }
+#skipseed { font-size: 0.6em; padding: 2px 6px; }
+#generatekeyinput { font-size: 0.6em; width: 220px; }
+#generatelabelskip { font-size: 0.55em; }
 #generatekeyinput { position: relative; z-index: 20; }
 #keyarea { height: 250px; }
 #keyarea .pubaddress { float: none; display: block; padding: 0; height: auto; }
@@ -51,6 +56,7 @@ input[type=checkbox] { position: relative; z-index: 20; }
 /* Phase 5b header row: [official bitcore.cc wordmark + title] ... [language dropdown right] */
 #headerrow { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 6px 12px; padding: 4px 0 2px 0; }
 #headerleft { display: flex; align-items: center; gap: 14px; min-width: 0; }
+#logolink { display: inline-flex; text-decoration: none; cursor: pointer; }
 #logo { width: 200px; height: 61px; flex: 0 0 auto; }
 #headertitle { font-family: Arial, Helvetica, sans-serif; font-size: 26px; font-weight: bold; color: #0a1537; white-space: nowrap; }
 		
@@ -194,6 +200,14 @@ a:hover { color: #ff9c00; }
 	.commands { border-bottom: 2px solid #0a1537;  padding: 10px 2px; margin-bottom: 0; }
 	.commands .row { padding: 0 0; text-align: left; } 
 	.commands .row.extra { padding-top: 6px; }
+	/* invisible layout table for the bulk wallet commands */
+	.commands table.cmdtable { border-collapse: collapse; border: 0; margin: 0; }
+	.commands table.cmdtable td { border: 0; padding: 4px 10px 4px 0; text-align: left; vertical-align: middle; }
+	.commands table.cmdtable td.lbl { white-space: nowrap; width: 1%; text-align: right; padding-left: 0; }
+	.commands table.cmdtable td.ctl { white-space: nowrap; text-align: left; }
+	.commands table.cmdtable td.printcell { text-align: right; padding-right: 10px; }
+	.commands table.cmdtable tr:last-child td { padding-top: 8px; }
+	.commands table.cmdtable tr:nth-child(3) td { padding-top: 10px; }
 	.commands span { padding: 0 10px; }
 	.commands span.print { float: right; position: relative; z-index: 20; }
 	.commands span.right { float: right; }
@@ -282,7 +296,7 @@ a:hover { color: #ff9c00; }
 	#paperarea .keyarea:first-child { border-top: 2px solid #0a1537; }
 	#paperarea .keyarea.art:first-child { border: 0; }
 	.pagebreak { height: 1px; }
-	.paper #logo, .paper #headertitle { display: none; }
+	.paper #logolink, .paper #logo, .paper #headertitle { display: none; }
 	.menu, .footer, .commands, #tagline, #faqs, #culturemenu, #navtogglelabel { display: none; }
 	#detailprivwif { width: 285px; word-wrap: break-word; }
 	#detailprivwifcomp { width: 310px; word-wrap: break-word; text-align: right; }

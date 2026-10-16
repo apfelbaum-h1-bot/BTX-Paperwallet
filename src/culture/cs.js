@@ -34,7 +34,7 @@
 
 		// footer html
 		"footerlabeldonations": "Příspěvek:",
-		"footerlabeltranslatedby": "Překlad: 1LNF2anjkH3HyRKrhMzVYqYRKFeDe2TJWz",
+		"footerlabeltranslatedby": "Dary a originální web: <a href=\"https://bitaddress.org\" target=\"_blank\" rel=\"noopener noreferrer\">klikněte zde</a>",
 		"footerlabelpgp": "PGP",
 		"footerlabelversion": "Historie verzí",
 		"footerlabelgithub": "GitHub Repository",

@@ -3,6 +3,8 @@
 		currentCulture: "en",
 
 		autoDetectTranslation: function () {
+			// Default language is English; browser language detection overrides it
+			// when a supported language is recognized.
 			// window.navigator.language for Firefox / Chrome / Opera Safari
 			// window.navigator.userLanguage for IE
 			var language = window.navigator.language || window.navigator.userLanguage;

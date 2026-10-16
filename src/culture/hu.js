@@ -35,7 +35,7 @@
 
 		// footer html
 		"footerlabeldonations": "Adományok:",
-		"footerlabeltranslatedby": "Fordította: 1GEBor11XtqDoamipB8nAV7o4fNW5JcrUD",
+		"footerlabeltranslatedby": "Adományok és az eredeti oldal: <a href=\"https://bitaddress.org\" target=\"_blank\" rel=\"noopener noreferrer\">kattintson ide</a>",
 		"footerlabelpgp": "PGP",
 		"footerlabelversion": "Változatok története",
 		"footerlabelgithub": "GitHub kódtár",

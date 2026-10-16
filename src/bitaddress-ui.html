@@ -120,6 +120,8 @@
 	<div id="main">
 		<div id="headerrow">
 			<div id="headerleft">
+				<!-- Logo links to bitcore.cc in a new tab -->
+				<a id="logolink" href="https://bitcore.cc" target="_blank" rel="noopener noreferrer" title="bitcore.cc">
 				<!-- Official bitcore.cc wordmark (img/bitcore-wordmark.svg, orange #F49919), inlined verbatim for the light header background and offline single-file use. Replaces the Phase 5 interim inline SVG logo. -->
 				<svg id="logo" width="200" height="61" viewBox="0 0 200 61.1" role="img" aria-label="bitcore.cc" xmlns="http://www.w3.org/2000/svg">
 					<title>bitcore.cc</title>
@@ -166,6 +168,7 @@
 							C21.3,30.3,21,29.9,20.7,29.9z"/>
 					</g>
 				</svg>
+				</a>
 				<span id="headertitle">Bitcore BTX - Paperwallet</span>
 			</div>
 			<div id="culturemenu">
@@ -218,7 +221,12 @@
 		<div id="generate">
 			<span id="generatelabelbitcoinaddress">Generating Bitcore BTX Address...</span><br />
 			<span id="generatelabelmovemouse">MOVE your mouse around to add some extra randomness... </span><span id="mousemovelimit"></span><br />
-			<span id="generatelabelkeypress">OR type some random characters into this textbox</span> <input type="text" id="generatekeyinput" onkeydown="ninja.seeder.seedKeyPress(event);" /><br />
+			<span id="generatelabelkeypress">OR type some random characters into this textbox</span><br />
+			<div id="skiprow">
+				<input type="button" id="skipseed" value="Skip randomness »" onclick="ninja.seeder.skip();" />
+				<input type="text" id="generatekeyinput" onkeydown="ninja.seeder.seedKeyPress(event);" />
+			</div>
+			<span id="generatelabelskip">(uses the browser's built-in CSPRNG — mouse movement only adds extra entropy)</span><br />
 			<div id="seedpooldisplay"></div>
 		</div>
 
@@ -260,7 +268,7 @@
 						<p id="singletip2"><b>To safeguard this wallet</b> you must print or otherwise record the Bitcore BTX address and private key. It is important to make a backup copy of the private key and store it in a safe location. This site does not have knowledge of your private key. If you are familiar with PGP you can download this all-in-one HTML page and check that you have an authentic version from the author of this site by matching the SHA256 hash of this HTML with the SHA256 hash available in the signed version history document linked on the footer of this site. If you leave/refresh the site or press the "Generate New Address" button then a new private key will be generated and the previously displayed private key will not be retrievable.	Your Bitcore BTX private key should be kept a secret. Whomever you share the private key with has access to spend all the BTX associated with that address. If you print your wallet then store it in a zip lock bag to keep it safe from water. Treat a paper wallet like cash.</p>
 						<p id="singletip3"><b>Add funds</b> to this wallet by instructing others to send BTX to your Bitcore BTX address.</p>
 						<p id="singletip4"><b>Check your balance</b> by going to chainz.cryptoid.info/btx and entering your Bitcore BTX address.</p>
-						<p id="singletip5"><b>Spend your BTX</b> by going to chainz.cryptoid.info/btx and sweep the full balance of your private key into your account at their website. You can also spend your funds by downloading one of the popular Bitcore BTX p2p clients and importing your private key to the p2p client wallet. Keep in mind when you import your single key to a Bitcore BTX p2p client and spend funds your key will be bundled with other private keys in the p2p client wallet. When you perform a transaction your change will be sent to another Bitcore BTX address within the p2p client wallet. You must then backup the p2p client wallet and keep it safe as your remaining BTX will be stored there. Satoshi advised that one should never delete a wallet.</p>
+						<p id="singletip5"><b>Spend your BTX</b> by importing your private key into a Bitcore BTX wallet application, or by sweeping it with a compatible wallet app. You can also spend your funds by downloading one of the popular Bitcore BTX p2p clients and importing your private key to the p2p client wallet. Keep in mind when you import your single key to a Bitcore BTX p2p client and spend funds your key will be bundled with other private keys in the p2p client wallet. When you perform a transaction your change will be sent to another Bitcore BTX address within the p2p client wallet. You must then backup the p2p client wallet and keep it safe as your remaining BTX will be stored there. Satoshi advised that one should never delete a wallet.</p>
 					</div>
 				</div>
 			</div>
@@ -286,16 +294,30 @@
 			<div id="bulkarea" class="walletarea">
 				<div class="commands">
 					<div id="bulkcommands" class="row">
-						<span><label id="bulklabelstartindex" for="bulkstartindex">Start index:</label> <input type="text" id="bulkstartindex" value="1" /></span>
-						<span><label id="bulklabelrowstogenerate" for="bulklimit">Rows to generate:</label> <input type="text" id="bulklimit" value="3" /></span>
-						<span><label id="bulklabelcompressed" for="bulkcompressed">Compressed addresses?</label> <input type="checkbox" id="bulkcompressed" checked="checked" /></span>
-						<span><label id="bulklabelsegwit" for="bulksegwit">SegWit address (btx1...)?</label> <input type="checkbox" id="bulksegwit" /></span>
-						<span><input type="button" id="bulkgenerate" value="Generate" onclick="ninja.wallets.bulkwallet.buildCSV(document.getElementById('bulklimit').value * 1, document.getElementById('bulkstartindex').value * 1, document.getElementById('bulkcompressed').checked, document.getElementById('bulkpassphrase').value);" /> </span>
-						<span class="print"><input type="button" name="print" id="bulkprint" value="Print" onclick="window.print();" /></span>
-					</div>
-					<div id="bulkadvancedcommands" class="row extra">
-						<span><label id="bulklabelencrypt" for="bulkencrypt">BIP38 Encrypt?</label> <input type="checkbox" id="bulkencrypt" onchange="ninja.wallets.bulkwallet.toggleEncrypt(this);" /></span>
-						<span><label id="bulklabelBIPpassphrase" for="bulkpassphrase">Passphrase:</label> <input type="text" id="bulkpassphrase" /></span>
+						<table class="cmdtable">
+							<tr>
+								<td class="lbl"><label id="bulklabelstartindex" for="bulkstartindex">Start index:</label></td>
+								<td class="ctl"><input type="text" id="bulkstartindex" value="1" /></td>
+								<td class="lbl"><label id="bulklabelrowstogenerate" for="bulklimit">Rows to generate:</label></td>
+								<td class="ctl"><input type="text" id="bulklimit" value="3" /></td>
+							</tr>
+							<tr>
+								<td class="lbl"><label id="bulklabelcompressed" for="bulkcompressed">Compressed addresses?</label></td>
+								<td class="ctl"><input type="checkbox" id="bulkcompressed" checked="checked" /></td>
+								<td class="lbl"><label id="bulklabelsegwit" for="bulksegwit">SegWit address (btx1...)?</label></td>
+								<td class="ctl"><input type="checkbox" id="bulksegwit" /></td>
+							</tr>
+							<tr>
+								<td colspan="2"><input type="button" id="bulkgenerate" value="1. Generate" onclick="ninja.wallets.bulkwallet.buildCSV(document.getElementById('bulklimit').value * 1, document.getElementById('bulkstartindex').value * 1, document.getElementById('bulkcompressed').checked, document.getElementById('bulkpassphrase').value);" /></td>
+								<td colspan="2" class="printcell"><input type="button" name="print" id="bulkprint" value="2. Print" onclick="window.print();" /></td>
+							</tr>
+							<tr id="bulkadvancedrow">
+								<td class="lbl"><label id="bulklabelencrypt" for="bulkencrypt">BIP38 Encrypt?</label></td>
+								<td class="ctl"><input type="checkbox" id="bulkencrypt" onchange="ninja.wallets.bulkwallet.toggleEncrypt(this);" /></td>
+								<td class="lbl"><label id="bulklabelBIPpassphrase" for="bulkpassphrase">Passphrase:</label></td>
+								<td class="ctl"><input type="text" id="bulkpassphrase" /></td>
+							</tr>
+						</table>
 					</div>
 				</div>
 				<div class="body">
@@ -344,6 +366,7 @@
 					</div>
 					<div class ="row extra">
 						<span><label tabindex="3" id="brainlabelcompressed" for="braincompressed">Compressed address?</label> <input type="checkbox" id="braincompressed" /></span>
+						<span><label id="brainlabelsegwit" for="brainsegwit">SegWit address (btx1...)?</label> <input type="checkbox" id="brainsegwit" /></span>
 						<span><input tabindex="4" type="button" id="brainview" value="View" onclick="ninja.wallets.brainwallet.view();" /></span>
 					</div>
 					<div class="row extra"><span id="brainwarning"></span></div>
@@ -584,7 +607,7 @@
 				<div class="tooltip" id="statusprotocolbad">
 					<span class="statuswarn" id="statuslabelprotocolbad">&#9888; Think twice!</span>
 					<span id="statuslabelprotocolbad1">You appear to be running this generator online from a live website. For valuable wallets it is recommended to</span>
-					<a id="statuslabelprotocolbad2" href="https://github.com/bitcore-btx/BTX-Paperwallet/archive/v//version.zip">download</a>
+					<a id="statuslabelprotocolbad2" href="https://github.com/bitcore-btx/BTX-Paperwallet/archive/refs/heads/master.zip">download</a>
 					<span id="statuslabelprotocolbad3">the zip file from GitHub and run this generator offline as a local html file.</span>
 					<br /><br /><input type="button" value="OK" class="button" id="statusokprotocolbad" onclick="document.getElementById('statusprotocolbad').style.display = 'none';" />
 				</div>
@@ -607,9 +630,9 @@
 						<span class="statusicon" id="statuskeypool" onclick="ninja.status.showKeyPool();">&#8803;</span>
 					</span>
 					<span class="item"><span id="footerlabeldonations">Donations:</span> <b>2LGhYC</b>LxUA4thhVR6ffxFTB6uUapzjnmoM (BTX)</span>
-					<span class="item" id="footerlabeltranslatedby"></span>
+					<span class="item" id="footerlabeltranslatedby">Donations &amp; original site: <a href="https://bitaddress.org" target="_blank" rel="noopener noreferrer">click here</a></span>
 					<span class="item"><a href="https://github.com/bitcore-btx/BTX-Paperwallet" target="_blank" id="footerlabelgithub">GitHub Repository</a> 
-						(<a href="https://github.com/bitcore-btx/BTX-Paperwallet/archive/v//version.zip" target="_blank" id="footerlabelgithubzip">zip</a>)</span>
+						(<a href="https://github.com/bitcore-btx/BTX-Paperwallet/archive/refs/heads/master.zip" target="_blank" id="footerlabelgithubzip">zip</a>)</span>
 				</div>
 			</div>
 			<div class="authorpgp">
@@ -617,9 +640,9 @@
 					<a href="CHANGELOG.txt.asc" target="_blank"><span id="footerlabelversion">Version History</span> (//version)</a>
 					
 				</span>
-				<span class="item">527B 5C82 B1F6 B2DB 72A0<br />ECBF 8749 7B91 6397 4F5A</span>
+				<span class="item">6590 A6D1 2F3A 97FB<br />C22EEE 49B5CF EDBA</span>
 				<span class="item">
-					(<a href="pointbiz_bitaddress.org.asc" target="_blank" id="footerlabelpgp">PGP</a>)
+					(<a href="bitcore-paperwallet-public.asc" target="_blank" id="footerlabelpgp">PGP</a>)
 					(<a href="javascript:window.location=window.location.pathname+'.sig';" target="_blank" id="footerlabelsig">sig</a>)
 				</span>
 			</div>

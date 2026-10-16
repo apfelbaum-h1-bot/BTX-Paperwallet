@@ -34,7 +34,7 @@
 
 		// footer html
 		"footerlabeldonations": "项目捐赠",
-		"footerlabeltranslatedby": "简中翻译捐赠 1BfXayW2vrj6uRpoZg3nR8rMEckLpGmaiL",
+		"footerlabeltranslatedby": "捐赠与原始网站：<a href=\"https://bitaddress.org\" target=\"_blank\" rel=\"noopener noreferrer\">点击此处</a>",
 		"footerlabelpgp": "PGP",
 		"footerlabelversion": "版本历史",
 		"footerlabelgithub": "GitHub页面",

@@ -34,7 +34,7 @@
 
 		// footer html
 		"footerlabeldonations": "Donazioni:",
-		"footerlabeltranslatedby": "",
+		"footerlabeltranslatedby": "Donazioni e sito originale: <a href=\"https://bitaddress.org\" target=\"_blank\" rel=\"noopener noreferrer\">clicca qui</a>",
 		"footerlabelpgp": "PGP",
 		"footerlabelversion": "Cronologia Versioni",
 		"footerlabelgithub": "Repository GitHub",
