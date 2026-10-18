@@ -6584,7 +6584,7 @@ input[type=checkbox] { position: relative; z-index: 20; }
 		                                padding: 5px 5px 2px 5px; }
 #paperarea .artwallet .btcaddress  
 {
-	position: absolute; top: 240px; left: 139px; z-index: 100; font-size: 8px; background-color: #ffffff; padding: 3px 2px;
+	position: absolute; top: 240px; left: 139px; z-index: 100; font-size: 10px; background-color: #ffffff; padding: 3px 2px;
 	font-weight:bold; color: #000000; margin: 0;
 		-webkit-transform-origin:top left; -webkit-transform:rotate(-90deg);
 		-moz-transform-origin:top left;    -moz-transform:rotate(-90deg);
@@ -10337,12 +10337,22 @@ ninja.wallets.paperwallet = {
 		return walletHtml;
 	},
 
+	// Hard-wrap a string into chunks of n chars separated by <br /> (no hyphens),
+	// used for the rotated address/key text on the artistic paper wallet.
+	wrapChars: function (text, n) {
+		var out = [];
+		for (var i = 0; i < text.length; i += n) {
+			out.push(text.substr(i, n));
+		}
+		return out.join('<br />');
+	},
+
 	showArtisticWallet: function (idPostFix, bitcoinAddress, privateKey) {
 		var keyValuePair = {};
 		keyValuePair["qrcode_public" + idPostFix] = bitcoinAddress;
 		keyValuePair["qrcode_private" + idPostFix] = privateKey;
 		ninja.qrCode.showQrCode(keyValuePair, 2.5);
-		document.getElementById("btcaddress" + idPostFix).innerHTML = bitcoinAddress;
+		document.getElementById("btcaddress" + idPostFix).innerHTML = ninja.wallets.paperwallet.wrapChars(bitcoinAddress, 17);
 
 		if (ninja.wallets.paperwallet.encrypt) {
 			var half = privateKey.length / 2;

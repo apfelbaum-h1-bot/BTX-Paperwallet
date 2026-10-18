@@ -183,12 +183,22 @@ ninja.wallets.paperwallet = {
 		return walletHtml;
 	},
 
+	// Hard-wrap a string into chunks of n chars separated by <br /> (no hyphens),
+	// used for the rotated address/key text on the artistic paper wallet.
+	wrapChars: function (text, n) {
+		var out = [];
+		for (var i = 0; i < text.length; i += n) {
+			out.push(text.substr(i, n));
+		}
+		return out.join('<br />');
+	},
+
 	showArtisticWallet: function (idPostFix, bitcoinAddress, privateKey) {
 		var keyValuePair = {};
 		keyValuePair["qrcode_public" + idPostFix] = bitcoinAddress;
 		keyValuePair["qrcode_private" + idPostFix] = privateKey;
 		ninja.qrCode.showQrCode(keyValuePair, 2.5);
-		document.getElementById("btcaddress" + idPostFix).innerHTML = bitcoinAddress;
+		document.getElementById("btcaddress" + idPostFix).innerHTML = ninja.wallets.paperwallet.wrapChars(bitcoinAddress, 17);
 
 		if (ninja.wallets.paperwallet.encrypt) {
 			var half = privateKey.length / 2;
